@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRUKSHUNDSKLUBBEN</title>
+    <style>      
+
+        body {
+            background:
+                radial-gradient(black 3px, transparent 4px),
+                radial-gradient(black 3px, transparent 4px),
+                linear-gradient(#fff 4px, transparent 0),
+                linear-gradient(45deg, transparent 74px, transparent 75px, #a4a4a4 75px, #a4a4a4 76px, transparent 77px, transparent 109px),
+                linear-gradient(-45deg, transparent 75px, transparent 76px, #a4a4a4 76px, #a4a4a4 77px, transparent 78px, transparent 109px),
+                #fcf9f9;
+            background-size: 109px 109px, 109px 109px, 100% 6px, 109px 109px, 109px 109px;
+            background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+
+        button {
+            margin-top: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-page">
+        <div class="form">
+            <form class="login-form">
+                <input type="text" placeholder="Användarnamn" id="username">
+                <input type="password" placeholder="Lösenord" id="password">
+                <button onclick="return login()">Logga in</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="welcome-page" style="display: none;">
+        <h1>Välkommen till Brukshundsklubben</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br>
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris<br>
+            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in<br>
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br>
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia<br>
+            deserunt mollit anim id est laborum.</p>
+        <img src="asplis.jpg" alt="dog-picture" height="250">
+        <img src="leri.jpg" alt="dog-picture" height="250">
+        <button onclick="logout()">Logga ut</button>
+    </div>
+
+    <script>
+        var isLoggedIn = false;
+
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+
+            if (username === "Bella" && password === "qwe123") {
+                isLoggedIn = true;
+                showWelcomePage();
+            } else {
+                alert("Fel användarnamn eller lösenord. Försök igen.");
+            }
+
+            return false;
+        }
+
+        function showWelcomePage() {
+            document.querySelector(".login-page").style.display = "none";
+            document.querySelector(".welcome-page").style.display = "block";
+        }
+
+        function logout() {
+            isLoggedIn = false;
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
+            document.querySelector(".welcome-page").style.display = "none";
+            document.querySelector(".login-page").style.display = "block";
+        }
+    </script>
+    <script src="localstorage.js"></script>
+</body>
+
+</html>
